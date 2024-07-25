@@ -116,10 +116,11 @@ const DrawingStage = ({
           'Content-Type': 'multipart/form-data'
         }
       });
+      console.log(2);
       console.log('File uploaded successfully:', response.data);
 
       // Используем download_url для скачивания файла
-      const downloadUrl = `${process.env.REACT_APP_DOWNLOAD_URL}${response.data.download_url}`;
+      const downloadUrl = `${process.env.REACT_APP_DOWNLOAD_URL}media/uploads/test-a.jpg`;
       if (downloadUrl && downloadCheck) {
         downloadFile(downloadUrl);
       }

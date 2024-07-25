@@ -84,7 +84,7 @@ const DrawingStageOrder = ({
     stage.add(whiteLayer);
     whiteLayer.moveToBottom();
     stage.draw();
-  
+ 
     const dataURL = stage.toDataURL({ mimeType: 'image/jpeg', quality: 1 });
     const file = dataURLtoFile(dataURL, `${fileName.trim()}.jpg`);
     const csrfToken = await getCSRFToken();
@@ -107,9 +107,9 @@ const DrawingStageOrder = ({
       console.log('File uploaded successfully:', response.data);
 
       // Используем download_url для скачивания файла
-      const downloadUrl = `${process.env.REACT_APP_DOWNLOAD_URL}${response.data.download_url}`;
+      const downloadUrl = `${process.env.REACT_APP_DOWNLOAD_URL}${response.data.file}`;
       if (downloadUrl && downloadCheck) {
-        downloadFile(downloadUrl);
+        downloadFile(downloadUrl, fileName);
       }
 
     } catch (error) {
@@ -119,10 +119,10 @@ const DrawingStageOrder = ({
   };
 
   // Функция для скачивания файла
-  const downloadFile = (downloadUrl) => {
+  const downloadFile = (downloadUrl, fileName) => {
     const link = document.createElement('a');
     link.href = downloadUrl;
-    link.setAttribute('download', true); // Указываем, что это загрузка файла
+    link.setAttribute('download', fileName); // Указываем, что это загрузка файла
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
