@@ -43,6 +43,20 @@ services:
     networks:
       - common
     
+  reports:
+    stdin_open: true
+    container_name: reports_container
+    restart: always
+    build:
+      context: ../reports
+      dockerfile: Dockerfile
+    volumes:
+      - ../reports:/app/reports
+    ports:
+      - '8080:8080'
+    networks:
+      - common
+    
   backend:
     container_name: backend_container
     restart: always
