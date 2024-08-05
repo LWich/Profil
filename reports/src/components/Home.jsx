@@ -1,8 +1,8 @@
 // src/components/Home.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useApi } from './ApiContext';
+import axiosInstance from './axiosInstance';
 
 const Home = () => {
   const { apiEndpoints, setApiEndpoints } = useApi();
@@ -20,10 +20,7 @@ const Home = () => {
       }
 
       try {
-        const axiosInstance = axios.create({
-          baseURL: 'http://localhost:8000/api/v1', // Полный путь к внешнему API-серверу
-        });
-        const response = await axiosInstance.get('/');
+        const response = await axiosInstance.get('/api/v1/');
         console.log(response.data)
         setApiEndpoints(response.data);
         setLoading(false);

@@ -1,6 +1,6 @@
 // src/contexts/ApiContext.jsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
 
 const ApiContext = createContext();
 
@@ -21,10 +21,7 @@ export const ApiProvider = ({ children }) => {
       }
 
       try {
-        const axiosInstance = axios.create({
-          baseURL: 'http://localhost:8000/api/v1', // Полный путь к внешнему API-серверу
-        });
-        const response = await axiosInstance.get('/');
+        const response = await axiosInstance.get('/api/v1/');
         console.log('API Response:', response.data); // Для отладки
         setApiEndpoints(response.data);
         setLoading(false);

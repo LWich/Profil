@@ -4,7 +4,7 @@ import axiosInstance from './axiosInstance';
 
 export const login = async (username, password) => {
   try {
-    const response = await axiosInstance.post('admin/login/', {
+    const response = await axiosInstance.post('/api/admin/login/', {
       username: username,
       password: password,
     });
