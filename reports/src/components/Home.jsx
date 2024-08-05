@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApi } from './ApiContext';
-import axiosInstance from './axiosInstance';
+import axiosInstance from '../api/axiosInstance';
 
 const Home = () => {
   const { apiEndpoints, setApiEndpoints } = useApi();

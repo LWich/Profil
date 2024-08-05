@@ -1,6 +1,6 @@
 // src/contexts/ApiContext.jsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axiosInstance from './axiosInstance';
+import axiosInstance from '../api/axiosInstance';
 
 const ApiContext = createContext();
 
